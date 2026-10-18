@@ -2,56 +2,53 @@ import java.util.*;
 
 public class Ex4 {
     public static void reuniune(Vector v1, Vector v2, Vector v3){
-        while(v1.size() > 0 && v2.size() > 0){
-            v3.add((int) v1.elementAt(0));
-            v3.add((int) v2.elementAt(0));
-            v1.removeElementAt(0);
-            v2.removeElementAt(0);
+        for(int i = 0; i < v1.size(); i++) {
+            int val = (int) v1.elementAt(i);
+            if(!v3.contains(val)) v3.add(val);
         }
-        while(v1.size() > 0){
-            v3.add((int) v1.elementAt(0));
-            v1.removeElementAt(0);
-        }
-        while(v2.size() > 0){
-            v3.add((int) v2.elementAt(0));
-            v2.removeElementAt(0);
+        for(int i = 0; i < v2.size(); i++) {
+            int val = (int) v2.elementAt(i);
+            if(!v3.contains(val)) v3.add(val);
         }
     }
+
     public static void intersectie(Vector v1, Vector v2, Vector v4){
-        while(v1.size() > 0 && v2.size() > 0){
-            if((int) v1.elementAt(0) == (int) v2.elementAt(0)) {
-                v4.add((int) v1.elementAt(0));
+        for(int i = 0; i < v1.size(); i++) {
+            int val = (int) v1.elementAt(i);
+            if(v2.contains(val) && !v4.contains(val)) {
+                v4.add(val);
             }
-            v1.removeElementAt(0);
-            v2.removeElementAt(0);
         }
     }
+
     public static void diferenta(Vector v1, Vector v2, Vector v5){
-        while(v1.size() > 0 && v2.size() > 0){
-            /*if((int) v1.elementAt(0) != (int) v2.elementAt(0)) {
-                v5.add((int) v1.elementAt(0));
-            }*/
-            if(v2.contains((int)v1.elementAt(0))){ }
-            else v5.add((int) v1.elementAt(0));
-            v1.removeElementAt(0);
-            v2.removeElementAt(0);
+        for(int i = 0; i < v1.size(); i++) {
+            int val = (int) v1.elementAt(i);
+            if(!v2.contains(val) && !v5.contains(val)) {
+                v5.add(val);
+            }
         }
     }
+
     public static void main(String[] args){
-        Vector v1 = new Vector(0);
-        Vector v2 = new Vector(0);
-        Random generator = new Random();
+        Vector v1 = new Vector();
+        Vector v2 = new Vector();
         for(int i = 0; i < 10; i++){
             v1.add(i);
-            v2.add(i);
-            //v2.add((i * 2) + 11);
+            v2.add(i + 5);
         }
-        System.out.println(v1 + "\n" + v2);
-        Vector v3 = new Vector(0);
-        //reuniune(v1, v2, v3);
-        System.out.println(v3);
-        Vector v4 = new Vector(0);
-        diferenta(v1, v2, v4);
-        System.out.println(v4);
+        System.out.println("v1: " + v1);
+        System.out.println("v2: " + v2);
+        Vector v3 = new Vector();
+        reuniune(v1, v2, v3);
+        System.out.println("Reuniune (v1 si v2): " + v3);
+
+        Vector v4 = new Vector();
+        intersectie(v1, v2, v4);
+        System.out.println("Intersectie (v1 si v2): " + v4);
+
+        Vector v5 = new Vector();
+        diferenta(v1, v2, v5);
+        System.out.println("Diferenta (v1 si v2, adica v1 - v2): " + v5);
     }
 }

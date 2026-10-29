@@ -95,7 +95,7 @@ class Romb extends Paralelogram {
         this.unghi3 = unghi3;
         this.unghi4 = unghi4;
     }
-    public double diag1 = 2 * latura1 * Math.sin(unghi1), diag2 = 2 * latura1 * Math.cos(unghi1);
+    public double diag1 = 2 * latura1 * Math.sin(Math.toRadians(unghi1)), diag2 = 2 * latura1 * Math.cos(Math.toRadians(unghi1));
     public double arie(){
         return (diag1*diag2)/2;
     }

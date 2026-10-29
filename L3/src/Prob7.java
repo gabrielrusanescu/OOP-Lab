@@ -1,18 +1,31 @@
 class ClockTime{
     int hour, minute;
+    ClockTime(int h, int m){
+        hour = h; minute = m;
+    }
+    ClockTime(){
+        this(0, 0);
+    }
     public int compara(ClockTime a){
         if(a.hour == hour){
-            if(a.minute >= minute) return 1;
             return 0;
         }
         if(a.hour > hour) return 1;
         return 0;
+        // 1 inseamna a > this; 0 inseamna this >= a
     }
 }
 
 class Schedule{
     ClockTime departure;
     ClockTime arrival;
+    Schedule(ClockTime d, ClockTime a){
+        departure = d;
+        arrival = a;
+    }
+    Schedule(){
+        this(null, null);
+    }
     public int durata(){
         return arrival.hour*60 + arrival.minute - departure.hour*60 - departure.minute;
     }
@@ -37,20 +50,23 @@ class Route{
 class Train{
     Route r;
     Schedule s;
-    boolean local; // local va fi 0 pentru local si 1 pentru international
     Train(Route a, Schedule b, boolean c){
         r = a;
         s = b;
         local = c;
     }
     Train(){
-        this(null, null, 0);
     }
-    public int valoareBilet{
-        if(local == 0){
             return s.durata();
         }
         return 2*s.durata();
+    }
+    public String toString(){
+        return local + " " + r.origin + " (" + s.departure.hour + ":" + s.departure.minute + ") -> " + r.destination + " (" + s.arrival.hour + ":" + s.arrival.minute + ")";
+    }
+    public static void main(String[] args){
+        Train t1 = new Train(new Route("Bucuresti", "Paris"), new Schedule(new ClockTime(12, 30), new ClockTime(15, 40)), true);
+        System.out.println(t1.toString());
     }
 }
 

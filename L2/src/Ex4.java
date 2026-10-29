@@ -1,21 +1,15 @@
 import java.util.*;
 
 public class Ex4 {
-    static class test {
-        int x;
-        test() {
-            this(1210);
         }
-        test(int x) {
-            this.x = x;
         }
-        void cout() {
-            System.out.println(x);
         }
     }
     public static void main(String[] args) {
-        test porc = new test();
-        //porc.test();
-        porc.cout();
+}
+
+        Vector v5 = new Vector();
+        diferenta(v1, v2, v5);
+        System.out.println("Diferenta (v1 si v2, adica v1 - v2): " + v5);
     }
 }

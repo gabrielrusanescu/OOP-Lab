@@ -83,8 +83,8 @@ class SortedArray extends Array {
         for (int i = 0; i < size - 1; ++i) {
             if(x > getElement(i)) {
                 for(int j = i + 1; j < size; ++j){
-                    int elemj1 = getElement(j+1)
-                    setElement(getElement(j), )
+                    int elemj1 = getElement(j+1);
+                    //setElement(getElement(j), );
                 }
             }
         }

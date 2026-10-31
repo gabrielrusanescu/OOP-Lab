@@ -1,29 +1,22 @@
 import java.util.*;
-import java.lang.*;
 
 public class Array {
-    //Vectorul in care se vor retine elementele
     private Vector vector;
 
-    //Constructor clasei
     public Array() {
-        //Instantierea vectorului cu elemente
         vector = new Vector();
     }
 
-    //Metoda care adauga un element in vector, folosind pozitia curenta
     public void addElement(Integer x) {
         vector.add(x);
     }
 
-    //Metoda care adauga un element in vector, tinand cont de pozitia indicata
     public void addElement(Integer x, int poz) {
         if(poz >= 0 && poz <= vector.size()) {
             vector.add(poz, x);
         }
     }
 
-    //Metoda care returneaza elementul aflat in vector la pozitia indicata
     public int get(int poz) {
         int result;
         if(poz >= 0 && poz < vector.size()) {
@@ -34,22 +27,18 @@ public class Array {
         }
     }
 
-    //Metoda ce intoarce numarul de elemente din vector
     public int getSize() {
         return vector.size();
     }
 
-    //Metoda pentru stergerea unui element din vector
     public boolean remove(Integer x) {
         return vector.remove(x);
     }
 
-    //Metoda pentru stergerea elementului de pe pozitia pos din vector
     public Integer remove(int pos) {
         return (Integer) vector.remove(pos);
     }
 
-    //Metoda uzitata pentru afisarea unui obiect de tip Array
     public String toString() {
         String result = "{";
         for(int i = 0; i < vector.size(); i++) {
@@ -65,29 +54,60 @@ public class Array {
 }
 
 class SortedArray extends Array {
-    public Vector vector;
-    public SortedArray(){
-        vector = new Vector();
+    @Override
+    public void addElement(Integer x) {
+        super.addElement(x);
+        super.sort();
     }
-    public int getSize(){
-        return vector.size();
-    }
-    public int getElement(int poz) {
-        return (int)vector.elementAt(poz);
-    }
-    public void setElement(int elem, int poz) {
-        vector.setElementAt((int)elem, poz);
-    }
-    public void addElement(int x){
-        int size = getSize();
-        for (int i = 0; i < size - 1; ++i) {
-            if(x > getElement(i)) {
-                for(int j = i + 1; j < size; ++j){
-                    int elemj1 = getElement(j+1);
-                    //setElement(getElement(j), );
-                }
-            }
-        }
+}
+
+class MyStack {
+    private Array array;
+
+    public MyStack() {
+        array = new Array();
     }
 
+    public void push(Integer x) {
+        array.addElement(x);
+    }
+
+    public Integer pop() {
+        int size = array.getSize();
+        if (size == 0) {
+            return null;
+        }
+        int topIndex = size - 1;
+        Integer topElement = array.get(topIndex);
+        array.remove(topIndex);
+        return topElement;
+    }
+
+    public int getSize() {
+        return array.getSize();
+    }
+
+    @Override
+    public String toString() {
+        return array.toString();
+    }
+}
+
+class main {
+    public static void main(String[] args) {
+        SortedArray arr = new SortedArray();
+        arr.addElement(5);
+        arr.addElement(2);
+        arr.addElement(9);
+        arr.addElement(1);
+        System.out.println("SortedArray: " + arr);
+
+        MyStack stack = new MyStack();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        System.out.println("Stack:" + stack);
+        System.out.println("pop" + stack.pop());
+        System.out.println("Stack dupa pop:" + stack);
+    }
 }

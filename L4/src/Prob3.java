@@ -1,21 +1,22 @@
 import java.util.*;
 import java.lang.*;
 
-
-class HSet extends Hashtable{
-    public boolean add(Object value){
-        if(this.contains(value) == true){
+class HSet extends Hashtable {
+    public boolean add(Object value) {
+        if(this.containsKey(value) == true) {
             return false;
         }
         this.put(value, value);
         return true;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         String ret = super.keySet().toString();
         return ret;
     }
-    public Object remove(Object key){
+
+    public Object remove(Object key) {
         return (Object) super.remove(key);
     }
 }
@@ -41,7 +42,4 @@ class Test3 {
         set.add("Supraincarcare");
         System.out.println(set);
     }
-}
-
-public class Prob3 {
 }

@@ -1,83 +1,44 @@
+import java.lang.*;
 import java.util.*;
 
 class Person {
-    private String name;
-    private String address;
-    public Person(String name, String address) {
+    private String name, address;
+    Person(){
+        this("", "");
+    }
+    Person(String name, String address){
         this.name = name;
         this.address = address;
     }
-    public String getName() {
+    String getName(){
         return name;
     }
-    public String getAddress() {
+    String getAddress(){
         return address;
     }
-    public void setAddress(String address) {
+    void setAddress(String address){
         this.address = address;
     }
-    public String toString() {
-        return name + "(" + address + ")";
+    String toString(){
+        return name + ", " + address;
     }
 }
 
 class Student extends Person {
-    private Vector courses;
-    private Vector grades;
-    public Student(String name, String address) {
+    Vector courses, grades;
+    Student(String name, String address){
         super(name, address);
         courses = new Vector();
         grades = new Vector();
     }
-    public void addCourseGrade(String course, int grade) {
-        courses.add(course);
-        grades.add(grade);
+    String toString(){
+        return super.toString();
+    }
+    void addCourseGrade(String course, int grade){
+
     }
 
-    public void printGrades() {
-        for (int i = 0; i < courses.size(); i++) {
-            System.out.println(courses.get(i) + ": " + grades.get(i));
-        }
-    }
-    public double getAverageGrade() {
-        if (grades.size() == 0) {
-            return 0.0;
-        }
-        double sum = 0;
-        for (int i = 0; i < grades.size(); i++) {
-            sum += (int) grades.get(i);
-        }
-        return sum / grades.size();
-    }
 
-    @Override
-    public String toString() {
-        return "Student: " + super.toString();
-    }
-}
-
-class Teacher extends Person {
-    private Vector courses;
-    public Teacher(String name, String address) {
-        super(name, address);
-        courses = new Vector();
-    }
-    public boolean addCourse(String course) {
-        if (courses.contains(course)) {
-            return false;
-        }
-        courses.add(course);
-        return true;
-    }
-
-    public boolean removeCourse(String course) {
-        return courses.remove(course);
-    }
-
-    @Override
-    public String toString() {
-        return "teacher: " + super.toString();
-    }
 }
 
 class Test4 {

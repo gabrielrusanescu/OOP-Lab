@@ -48,3 +48,14 @@ class CompareDoi implements Comparator{
         return((Comparable)(p1.b)).compareTo(p2.b);
     }
 }
+
+class Test {
+    public static void main(String[] args) {
+        SortedVector v1=new SortedVector(new ComparePrimul()); SortedVector v2=new SortedVector(new CompareDoi()); v1.add(new Pair("x",1));
+        v1.add(new Pair("a",3));
+        v2.add(new Pair("a",3));
+        v2.add(new Pair("x",1));
+        System.out.println(v1);
+        System.out.println(v2);
+    }
+}

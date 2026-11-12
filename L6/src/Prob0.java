@@ -40,3 +40,11 @@ class ComparePrimul implements Comparator{
         return((Comparable)(p1.a)).compareTo(p2.a);
     }
 }
+
+class CompareDoi implements Comparator{
+    public int compare(Object o1, Object o2){
+        Pair p1 = (Pair) o1;
+        Pair p2 = (Pair) o2;
+        return((Comparable)(p1.b)).compareTo(p2.b);
+    }
+}

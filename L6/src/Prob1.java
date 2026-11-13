@@ -1,3 +1,5 @@
+import org.w3c.dom.css.Rect;
+
 abstract class Shape{
     private String color;
     private boolean filled;
@@ -123,5 +125,12 @@ class Square extends Rectangle{
     }
     public String toString(){
         return "" + side;
+    }
+}
+
+class Test1{
+    public void main(String[] args){
+        Square sq = new Square(7.0);
+        Rectangle r = sq;
     }
 }

@@ -29,13 +29,13 @@ abstract class Shape{
 class Circle extends Shape{
     private double radius;
     Circle(){
-        radius = 0;
+        super(); radius = 0;
     }
     Circle(double radius){
-        this.radius = radius;
+        super(); this.radius = radius;
     }
     Circle(double radius, String color, boolean filled){
-        this.radius = radius;
+        super(color, filled); this.radius = radius;
     }
     public double getRadius(){
         return radius;
@@ -58,13 +58,16 @@ class Rectangle extends Shape{
     private double width;
     private double length;
     Rectangle(){
+        super();
         width = 0; length = 0;
     }
     Rectangle(double width, double length){
+        super();
         this.width = width;
         this.length = length;
     }
     Rectangle(double width, double length, String color, boolean filled){
+        super(color, filled);
         this.width = width;
         this.length = length;
         super.setFilled(filled);
@@ -95,16 +98,16 @@ class Rectangle extends Shape{
 class Square extends Rectangle{
     private double side;
     Square(){
-        side = 0;
         super();
+        side = 0;
     }
     Square(double side){
-        this.side = side;
         super(side, side);
+        this.side = side;
     }
     Square(double side, String color, boolean filled){
-        this.side = side;
         super(side, side, color, filled);
+        this.side = side;
     }
     public double getSide(){
         return side;
